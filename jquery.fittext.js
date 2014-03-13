@@ -31,6 +31,7 @@
     return this.each(function(){
       var $this = $(this);              // store the object
       var compressor = kompressor || 1; // set the compressor
+      var sized = false;
 
       // Resizer() resizes items based on the object width divided by the compressor * 10
       var resizer = function () {
@@ -41,8 +42,17 @@
         size *= compressor;
         $this.css( 'font-size', size );
 
-        if (typeof settings.complete == "function") {
-          settings.complete.call($this)
+        if (!sized) {
+          // Call for first size
+          if (typeof settings.sized == "function") {
+            settings.sized.call($this)
+          }
+          sized = true
+        } else {
+          // Call for each resize
+          if (typeof settings.resized == "function") {
+            settings.resized.call($this)
+          }
         }
       };
 
