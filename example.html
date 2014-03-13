@@ -64,9 +64,11 @@
 		$("#fittext2").fitText();
 		$("#fittext3").fitText(0.9, { minFontSize: 50, maxFontSize: '75px' });
 		$("#fittext4").fitText(0.9, {
-			complete: function () {
-				$('.container').append('<p>Jenny Craig is ready!</p>')
+			sized: function () {
 				$('#fittext4').css('opacity', 1)
+			},
+			resized: function () {
+				$('.container').append('<p>Jenny Craig resizing!</p>')
 			}
 		});
 	</script>

@@ -40,6 +40,10 @@
         size = Math.min( parseFloat( settings.maxFontSize ), size );
         size *= compressor;
         $this.css( 'font-size', size );
+
+        if (typeof settings.complete == "function") {
+          settings.complete.call($this)
+        }
       };
 
       // Call once to set.
