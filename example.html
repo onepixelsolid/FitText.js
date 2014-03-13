@@ -6,7 +6,7 @@
 
 	<style type="text/css">
 		body {
-		  background: #233a40; 
+		  background: #233a40;
 		  color: #fff;
 		  font: 16px/1.8 sans-serif;
 		}
@@ -32,6 +32,14 @@
 			#d45848 -4px 4px 0;
 			margin: 5% auto 5%;
 		}
+		#fittext4 {
+			opacity: 0;
+			-webkit-transition: opacity 1s;
+			   -moz-transition: opacity 1s;
+			    -ms-transition: opacity 1s;
+			     -o-transition: opacity 1s;
+			        transition: opacity 1s;
+		}
 	</style>
 
 	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -44,17 +52,24 @@
 		<h1 id="fittext1">Squeeze with FitText</h1>
 		<h1 id="fittext2">FitText</h1>
 		<h1 id="fittext3">FitText like skinny jeans</h1>
+		<h1 id="fittext4">FitText like jenny craig</h1>
 		</header>
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 	</div>
-	
+
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
  	<script src="jquery.fittext.js"></script>
 	<script type="text/javascript">
 		$("#fittext1").fitText();
 		$("#fittext2").fitText();
 		$("#fittext3").fitText(0.9, { minFontSize: 50, maxFontSize: '75px' });
+		$("#fittext4").fitText(0.9, {
+			complete: function () {
+				$('.container').append('<p>Jenny Craig is ready!</p>')
+				$('#fittext4').css('opacity', 1)
+			}
+		});
 	</script>
-	
+
 </body>
 </html>
